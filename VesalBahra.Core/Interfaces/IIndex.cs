@@ -2,9 +2,10 @@
 
 namespace VesalBahra.Core.Interfaces
 {
-    public interface IIndex<Tkey> where Tkey:struct
+    public interface IIndex<TKey> 
+        where TKey:struct
     {
-        public Tkey Id { get; set; }
+        public TKey Id { get; set; }
 
 
         public DateTime CreateDate { get; set; }

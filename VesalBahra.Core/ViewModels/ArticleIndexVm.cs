@@ -2,28 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-using VesalBahar.Domine.Base;
+using VesalBahra.Core.Interfaces;
 
-namespace VesalBahar.Domine.Entities.Sliders
+namespace VesalBahra.Core.ViewModels
 {
-    public class Article : BaseEntity<int>, IAudiTable
+    public class ArticleIndexVm : IIndex<int>
     {
-        [Required]
-        [MaxLength(300)]
+        public int Id { get; set; }
+
+        [Display(Name = "عنوان مقاله")]
         public string Title { get; set; }
+
+        [Display(Name = "عنوان سربرگ مقاله")]
         public string HeadTitle { get; set; }
 
-        [Required]
-        [MaxLength(int.MaxValue)]
-        public string Description { get; set; }
+        [Display(Name = "عنوان عکس")]
         public string ImageTitle { get; set; }
 
         #region General
+
+        [Display(Name = "تاریخ ایجاد")]
         public DateTime CreateDate { get; set; }
+        [Display(Name = "تاریخ ویرایش")]
         public DateTime? ModifyDate { get; set; }
+
         #endregion
     }
 }
