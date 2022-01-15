@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VesalBahar.Domine.Base;
 
-namespace VesalBahar.Domine.Entities.Sliders
+namespace VesalBahar.Domine.Entities.Articles
 {
     public class Article : BaseEntity<int>, IAudiTable
     {

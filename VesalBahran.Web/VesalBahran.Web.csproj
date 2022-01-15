@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VesalBahar.IOC\VesalBahar.IOC.csproj" />
+    <ProjectReference Include="..\VesalBahra.Core\VesalBahra.Core.csproj" />
   </ItemGroup>
 
 </Project>
