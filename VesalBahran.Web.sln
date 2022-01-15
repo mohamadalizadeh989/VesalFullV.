@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahran.Web", "VesalBahran.Web\VesalBahran.Web.csproj", "{5A6143BB-542D-4F8D-8F59-FEBB92024741}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahra.Core", "VesalBahra.Core", "{417F906F-3D2D-402A-A2FA-42772CE88552}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahra.Core", "VesalBahra.Core\VesalBahra.Core.csproj", "{DDE6A309-BCB7-4045-83A3-A3171A46EE95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahar.Domine", "VesalBahar.Domine", "{C79A940D-B160-4B98-9AC4-85CE413150ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahar.Domine", "VesalBahar.Domine\VesalBahar.Domine.csproj", "{BD3A79EF-125C-48B9-ACA7-2DF9852EB5D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahar.Data", "VesalBahar.Data", "{4BB5D7FC-E078-4727-899B-CF06CBF32E41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahar.Data", "VesalBahar.Data\VesalBahar.Data.csproj", "{53F92C27-A5C2-4061-85D7-5831909082F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahar.IOC", "VesalBahar.IOC", "{C773952E-D959-4050-9824-5927A6A77154}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahar.IOC", "VesalBahar.IOC\VesalBahar.IOC.csproj", "{30ABD40D-A2E9-4E99-AF47-3BD1C01B1A71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A6143BB-542D-4F8D-8F59-FEBB92024741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6143BB-542D-4F8D-8F59-FEBB92024741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6143BB-542D-4F8D-8F59-FEBB92024741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6143BB-542D-4F8D-8F59-FEBB92024741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE6A309-BCB7-4045-83A3-A3171A46EE95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE6A309-BCB7-4045-83A3-A3171A46EE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE6A309-BCB7-4045-83A3-A3171A46EE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE6A309-BCB7-4045-83A3-A3171A46EE95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD3A79EF-125C-48B9-ACA7-2DF9852EB5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3A79EF-125C-48B9-ACA7-2DF9852EB5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3A79EF-125C-48B9-ACA7-2DF9852EB5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3A79EF-125C-48B9-ACA7-2DF9852EB5D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F92C27-A5C2-4061-85D7-5831909082F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F92C27-A5C2-4061-85D7-5831909082F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F92C27-A5C2-4061-85D7-5831909082F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F92C27-A5C2-4061-85D7-5831909082F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30ABD40D-A2E9-4E99-AF47-3BD1C01B1A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30ABD40D-A2E9-4E99-AF47-3BD1C01B1A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30ABD40D-A2E9-4E99-AF47-3BD1C01B1A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30ABD40D-A2E9-4E99-AF47-3BD1C01B1A71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DDE6A309-BCB7-4045-83A3-A3171A46EE95} = {417F906F-3D2D-402A-A2FA-42772CE88552}
+		{BD3A79EF-125C-48B9-ACA7-2DF9852EB5D9} = {C79A940D-B160-4B98-9AC4-85CE413150ED}
+		{53F92C27-A5C2-4061-85D7-5831909082F2} = {4BB5D7FC-E078-4727-899B-CF06CBF32E41}
+		{30ABD40D-A2E9-4E99-AF47-3BD1C01B1A71} = {C773952E-D959-4050-9824-5927A6A77154}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B6C3C31-B39E-4A57-86F4-9F6CCB3F5665}
+	EndGlobalSection
+EndGlobal
