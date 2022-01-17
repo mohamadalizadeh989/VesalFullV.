@@ -60,31 +60,31 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(ArticleCreateOrEditVm article)
-        //{
+        public async Task<IActionResult> Create(ArticleCreateOrEditVm article)
+        {
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            await _articleService.AddAsync(article);
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!await _articleService.Exists(article.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    object p = await LoadDropDownList(Article);
-        //    return View("CreateOrEdit", article);
-        //}
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _articleService.AddAsync(article);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!await _articleService.Exists(article.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            object p = await LoadDropDownList(Article);
+            return View("CreateOrEdit", article);
+        }
 
         private async Task LoadDropDownList(ArticleCreateOrEditVm article = null)
         {
