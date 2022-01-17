@@ -1,30 +1,36 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bz.ClassFinder.Attributes;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VesalBahar.Core.Interfaces;
+using VesalBahar.Core.ViewModels.Articles;
+using VesalBahar.Domine.Entities.Articles;
 
 namespace VesalBahran.Web.Areas.Admin.Controllers
 {
     [Route("Article")]
     public class ArticleController : BaseAdminController
     {
-        private readonly IProductService _productService;
-        private readonly IProductGroupService _productGroupService;
-        public ProductsController(IProductService productService, IProductGroupService productGroupService)
+        private readonly IArticleService _articleService;
+        private readonly IArticleGroupService _articleGroupService;
+        public ArticleController(IArticleService articleService, IArticleGroupService articleGroupService)
         {
-            _productService = productService;
-            _productGroupService = productGroupService;
+            _articleService = articleService;
+            _articleGroupService = articleGroupService;
         }
 
         [Route("ShowArticle")]
-        // GET: Admin/Products
+        // GET: Admin/articles
         public async Task<IActionResult> Index()
         {
-            return View(await _productService.GetAllAsync());
+            return View(await _articleService.GetAllAsync());
         }
         [BzDescription("")]
-        // GET: Admin/Products/Details/5
+        // GET: Admin/articles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,40 +38,40 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _productService.FindAsync(id.Value);
+            var article = await _articleService.FindAsync(id.Value);
 
-            if (product == null)
+            if (article == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(article);
         }
         [BzDescription("")]
-        // GET: Admin/Products/Create
+        // GET: Admin/articles/Create
         public async Task<IActionResult> Create()
         {
             await LoadDropDownList();
-            return View("CreateOrEdit", new ProductCreateOrEditVm());
+            return View("CreateOrEdit", new ArticleCreateOrEditVm());
         }
         [BzDescription("")]
-        // POST: Admin/Products/Create
+        // POST: Admin/articles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProductCreateOrEditVm product)
+        public async Task<IActionResult> Create(ArticleCreateOrEditVm article)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _productService.AddAsync(product);
+                    await _articleService.AddAsync(article);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await _productService.Exists(product.Id))
+                    if (!await _articleService.Exists(article.Id))
                     {
                         return NotFound();
                     }
@@ -76,20 +82,20 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            await LoadDropDownList(product);
-            return View("CreateOrEdit", product);
+            object p = await LoadDropDownList(Article);
+            return View("CreateOrEdit", article);
         }
 
-        private async Task LoadDropDownList(ProductCreateOrEditVm product = null)
+        private async Task LoadDropDownList(ArticleCreateOrEditVm article = null)
         {
-            if (product == null)
-                ViewBag.Groups = new SelectList(await _productGroupService.GetAllAsync(), "Id", "Title");
+            if (article == null)
+                ViewBag.Groups = new SelectList(await _articleGroupService.GetAllAsync(), "Id", "Title");
             else
-                ViewBag.Groups = new SelectList(await _productGroupService.GetAllAsync(), "Id", "Title", product.GroupId);
+                ViewBag.Groups = new SelectList(await _articleGroupService.GetAllAsync(), "Id", "Title", article.GroupId);
         }
 
         [BzDescription("")]
-        // GET: Admin/Products/Edit/5
+        // GET: Admin/articles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,23 +103,23 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _productService.FindAsync(id.Value);
-            if (product == null)
+            var article = await _articleService.FindAsync(id.Value);
+            if (article == null)
             {
                 return NotFound();
             }
-            await LoadDropDownList(product);
-            return View("CreateOrEdit", product);
+            await LoadDropDownList(article);
+            return View("CreateOrEdit", article);
         }
         [BzDescription("")]
-        // POST: Admin/Products/Edit/5
+        // POST: Admin/articles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, ProductCreateOrEditVm product)
+        public async Task<IActionResult> Edit(int id, ArticleCreateOrEditVm article)
         {
-            if (id != product.Id)
+            if (id != article.Id)
             {
                 return NotFound();
             }
@@ -122,11 +128,11 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    await _productService.EditAsync(product);
+                    await _articleService.EditAsync(article);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await _productService.Exists(product.Id))
+                    if (!await _articleService.Exists(article.Id))
                     {
                         return NotFound();
                     }
@@ -137,11 +143,11 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            await LoadDropDownList(product);
-            return View("CreateOrEdit", product);
+            await LoadDropDownList(article);
+            return View("CreateOrEdit", article);
         }
         [BzDescription("")]
-        // GET: Admin/Products/Delete/5
+        // GET: Admin/articles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,22 +155,22 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var product = await _productService.FindAsync(id.Value);
+            var article = await _articleService.FindAsync(id.Value);
 
-            if (product == null)
+            if (article == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(article);
         }
         [BzDescription("")]
-        // POST: Admin/Products/Delete/5
+        // POST: Admin/articles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _productService.DeleteAsync(id);
+            await _articleService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
