@@ -82,7 +82,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            object p = await LoadDropDownList(Article);
+            await LoadDropDownList(article);
             return View("CreateOrEdit", article);
         }
 

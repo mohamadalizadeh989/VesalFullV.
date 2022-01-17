@@ -1,0 +1,36 @@
+﻿@model VesalBahar.Core.ViewModels.Articles.ArticleCreateOrEditVm
+
+@{
+    ViewData["Title"] = $"حذف {Model.Title}";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این محصول اطمینان دارید؟</h3>
+<div>
+    <h4>محصول @Model.Title</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="حذف" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-default">بازگشت به فهرست</a>
+    </form>
+</div>
+
+
