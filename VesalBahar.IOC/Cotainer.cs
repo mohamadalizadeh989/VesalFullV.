@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using VesalBahar.Data;
+using VesalBahar.Data.Contexts;
 
 namespace VesalBahar.IOC
 {

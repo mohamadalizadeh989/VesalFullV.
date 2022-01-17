@@ -4,13 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VesalBahra.Core.Interfaces;
+using VesalBahar.Core.Interfaces;
+using VesalBahar.Core.Statics;
 
-namespace VesalBahra.Core.ViewModels
+namespace VesalBahar.Core.ViewModels.Articles
 {
     public class ArticleIndexVm : IIndex<int>
     {
         public int Id { get; set; }
+
+        [Display(Name = "نام گروه")]
+        public string GroupName { get; set; }
 
         [Display(Name = "عنوان مقاله")]
         public string Title { get; set; }
@@ -18,8 +22,13 @@ namespace VesalBahra.Core.ViewModels
         [Display(Name = "عنوان سربرگ مقاله")]
         public string HeadTitle { get; set; }
 
-        [Display(Name = "عنوان عکس")]
+        [Display(Name = "عنوان تصویر")]
         public string ImageTitle { get; set; }
+
+        public string ImageFullName =>
+            !string.IsNullOrEmpty(ImageTitle)
+                ? $"{PathTools.ArticleImagePath}{ImageTitle}"
+                : PathTools.ArticleImageDefautl;
 
         #region General
 

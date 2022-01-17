@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VesalBahar.Data\VesalBahar.Data.csproj" />
+    <ProjectReference Include="..\VesalBahra.Core\VesalBahar.Core.csproj" />
   </ItemGroup>
 
 </Project>

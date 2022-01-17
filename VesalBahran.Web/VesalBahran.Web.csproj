@@ -16,11 +16,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="X.PagedList" Version="8.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\VesalBahar.IOC\VesalBahar.IOC.csproj" />
-    <ProjectReference Include="..\VesalBahra.Core\VesalBahra.Core.csproj" />
+    <ProjectReference Include="..\VesalBahra.Core\VesalBahar.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\upload\article\" />
   </ItemGroup>
 
 </Project>

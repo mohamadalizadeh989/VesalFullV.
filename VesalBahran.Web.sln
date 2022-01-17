@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahran.Web", "VesalBahran.Web\VesalBahran.Web.csproj", "{5A6143BB-542D-4F8D-8F59-FEBB92024741}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahra.Core", "VesalBahra.Core", "{417F906F-3D2D-402A-A2FA-42772CE88552}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahar.Core", "VesalBahar.Core", "{417F906F-3D2D-402A-A2FA-42772CE88552}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahra.Core", "VesalBahra.Core\VesalBahra.Core.csproj", "{DDE6A309-BCB7-4045-83A3-A3171A46EE95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VesalBahar.Core", "VesalBahra.Core\VesalBahar.Core.csproj", "{DDE6A309-BCB7-4045-83A3-A3171A46EE95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VesalBahar.Domine", "VesalBahar.Domine", "{C79A940D-B160-4B98-9AC4-85CE413150ED}"
 EndProject

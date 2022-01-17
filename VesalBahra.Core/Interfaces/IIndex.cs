@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VesalBahra.Core.Interfaces
+namespace VesalBahar.Core.Interfaces
 {
     public interface IIndex<TKey> 
         where TKey:struct
