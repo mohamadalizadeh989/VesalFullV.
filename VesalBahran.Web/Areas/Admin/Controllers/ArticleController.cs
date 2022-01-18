@@ -30,7 +30,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             return View(await _articleService.GetAllAsync());
         }
 
-        [BzDescription("")]
+        [BzDescription("جزئیات")]
         // GET: Admin/articles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -49,7 +49,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             return View(article);
         }
 
-        [BzDescription("")]
+        [BzDescription("افزودن")]
         // GET: Admin/articles/Create
         public async Task<IActionResult> Create()
         {
@@ -57,7 +57,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             return View("CreateOrEdit", new ArticleCreateOrEditVm());
         }
 
-        [BzDescription("")]
+        [BzDescription("افزودن")]
         // POST: Admin/articles/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,7 +95,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
                 ViewBag.Groups = new SelectList(await _articleGroupService.GetAllAsync(), "Id", "Title", article.GroupId);
         }
 
-        [BzDescription("")]
+        [BzDescription("ویرایش")]
         // GET: Admin/articles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -113,7 +113,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             return View("CreateOrEdit", article);
         }
 
-        [BzDescription("")]
+        [BzDescription("ویرایش")]
         // POST: Admin/articles/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -147,7 +147,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             return View("CreateOrEdit", article);
         }
 
-        [BzDescription("")]
+        [BzDescription("حذف")]
         // GET: Admin/articles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -166,7 +166,7 @@ namespace VesalBahran.Web.Areas.Admin.Controllers
             return View(article);
         }
 
-        [BzDescription("")]
+        [BzDescription("حذف")]
         // POST: Admin/articles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

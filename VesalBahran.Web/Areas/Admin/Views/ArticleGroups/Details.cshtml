@@ -1,14 +1,14 @@
-﻿@model VesalBahar.Core.ViewModels.Articles.ArticleCreateOrEditVm
+﻿@model VesalBahar.Core.ViewModels.ArticleGroups.ArticleGroupCreateOrEditVm
 
 @{
-    ViewData["Title"] = $"جزییات - {Model.Title}";
+    ViewData["Title"] = $"جزئيات - {Model.Title}";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <div>
-    <h4>مقالات</h4>
+    <h4>گروه مقالات</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -18,15 +18,16 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.CreateDate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.CreateDate)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id">ویرایش</a>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.Id">ويرايش</a> |
     <a asp-action="Index" class="btn btn-default">بازگشت به فهرست</a>
 </div>
+
 
