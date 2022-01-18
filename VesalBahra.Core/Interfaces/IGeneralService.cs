@@ -6,8 +6,8 @@ namespace VesalBahar.Core.Interfaces
 {
     public interface IGeneralService<Tkey, TIndex, TCreateOrEdit>
         where Tkey : struct
-        where TIndex : IIndex<Tkey>
-        where TCreateOrEdit : ICreateOrEdit<Tkey>
+        where TIndex : IAdminIndexViewModel<Tkey>
+        where TCreateOrEdit : IAdminCreateOrEditViewModel<Tkey>
     {
         Task<List<TIndex>> GetAllAsync();
         Task<bool> AddAsync(TCreateOrEdit model);

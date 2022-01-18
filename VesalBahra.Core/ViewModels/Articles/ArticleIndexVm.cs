@@ -9,7 +9,7 @@ using VesalBahar.Core.Statics;
 
 namespace VesalBahar.Core.ViewModels.Articles
 {
-    public class ArticleIndexVm : IIndex<int>
+    public class ArticleIndexVm : IAdminIndexViewModel<int>
     {
         public int Id { get; set; }
 
@@ -22,7 +22,7 @@ namespace VesalBahar.Core.ViewModels.Articles
         [Display(Name = "عنوان سربرگ مقاله")]
         public string HeadTitle { get; set; }
 
-        [Display(Name = "عنوان تصویر")]
+        [Display(Name = "تصویر")]
         public string ImageTitle { get; set; }
 
         public string ImageFullName =>

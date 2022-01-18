@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VesalBahar.Data.Contexts;
 
 namespace VesalBahar.Data.Migrations
 {
     [DbContext(typeof(VesaleBaharContext))]
-    partial class VesaleBaharContextModelSnapshot : ModelSnapshot
+    [Migration("20220118190718_addArticleGroup")]
+    partial class addArticleGroup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

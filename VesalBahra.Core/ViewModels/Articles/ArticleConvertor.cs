@@ -12,9 +12,9 @@ namespace VesalBahar.Core.ViewModels.Articles
             return new ArticleDetailVm
             {
                 Id = article.Id,
+                Title = article.Title,
                 GroupId = article.GroupId,
                 GroupName = article.Group?.Title,
-                Title = article.Title,
                 HeadTitle = article.HeadTitle,
                 Description = article.Description,
                 ImageTitle = article.ImageTitle

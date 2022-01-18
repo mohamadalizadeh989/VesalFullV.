@@ -25,7 +25,7 @@ namespace VesalBahar.Data.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Article>().HasQueryFilter(A => !A.IsDelete);
+            modelBuilder.Entity<Article>().HasQueryFilter(a => !a.IsDelete);
             var date = new DateTime(2022, 01, 14);
 
             modelBuilder.Entity<ArticleGroup>().HasData(new ArticleGroup

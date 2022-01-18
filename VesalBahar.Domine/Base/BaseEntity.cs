@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace VesalBahar.Domine.Base
 {
-   public class BaseEntity<TKey> where TKey : struct
+   public class BaseEntity<T> where T : struct
     {
         [Key]
-        public TKey Id { get; set; }
+        public T Id { get; set; }
         public bool IsDelete { get; set; }
     }
 }

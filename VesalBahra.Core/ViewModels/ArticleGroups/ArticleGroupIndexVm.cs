@@ -8,7 +8,7 @@ using VesalBahar.Core.Interfaces;
 
 namespace VesalBahar.Core.ViewModels.ArticleGroups
 {
-    public class ArticleGroupIndexVm : IIndex<int>
+    public class ArticleGroupIndexVm : IAdminIndexViewModel<int>
     {
         public int Id { get; set; }
         [Display(Name = "عنوان گروه")]

@@ -8,7 +8,7 @@ using VesalBahar.Core.Interfaces;
 
 namespace VesalBahar.Core.ViewModels.ArticleGroups
 {
-    public class ArticleGroupCreateOrEditVm : ICreateOrEdit<int>
+    public class ArticleGroupCreateOrEditVm : IAdminCreateOrEditViewModel<int>
     {
         public int Id { get; set; }
         [Display(Name = "عنوان گروه")]

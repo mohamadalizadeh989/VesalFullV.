@@ -10,7 +10,7 @@ using VesalBahar.Core.Statics;
 
 namespace VesalBahar.Core.ViewModels.Articles
 {
-    public class ArticleCreateOrEditVm: ICreateOrEdit<int>
+    public class ArticleCreateOrEditVm : IAdminCreateOrEditViewModel<int>
     {
         public int Id { get; set; }
 
@@ -25,10 +25,10 @@ namespace VesalBahar.Core.ViewModels.Articles
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string HeadTitle { get; set; }
 
-        [Display(Name = "توضیحات")]
+        [Display(Name = "توضیحات مقاله")]
         public string Description { get; set; }
 
-        [Display(Name = "تصویر محصول")]
+        [Display(Name = "تصویر مقاله")]
         public IFormFile ImageFile { get; set; }
 
         [Display(Name = "عنوان تصویر")]

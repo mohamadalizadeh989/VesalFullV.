@@ -10,7 +10,7 @@ using VesalBahar.Data;
 using VesalBahar.Data.Contexts;
 using VesalBahar.Domine.Entities.Articles;
 
-namespace Shop.Core.Services
+namespace VesalBahar.Core.Services
 {
     public class ArticleGroupService : IArticleGroupService
     {

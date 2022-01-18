@@ -12,6 +12,6 @@ namespace VesalBahar.Core.Interfaces
     public interface IArticleService : IGeneralService<int, ArticleIndexVm, ArticleCreateOrEditVm>
     {
         IPagedList<ArticleDetailVm> GetArticlesByGroupId(int groupId, int page = 1);
-        ArticleDetailVm GetArticleDetail(int productId);
+        ArticleDetailVm GetArticleDetail(int articleId);
     }
 }

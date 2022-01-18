@@ -17,7 +17,7 @@ using X.PagedList;
 
 namespace VesalBahar.Core.Services
 {
-    public class ArticleService: IArticleService
+    public class ArticleService : IArticleService
     {
         private readonly VesaleBaharContext _context;
         private readonly ILoggerService<ArticleService> _logger;
@@ -28,16 +28,16 @@ namespace VesalBahar.Core.Services
             _logger = logger;
         }
 
-        public ArticleDetailVm GetArticleDetail(int articeId)   
+        public ArticleDetailVm GetArticleDetail(int articeId)
         {
             var model = _context.Articles.Include(c => c.Group).Single(c => c.Id == articeId);
             return model.ToDetailViewModel();
         }
-        public IPagedList<ArticleDetailVm> GetArticlesByGroupId(int articeId, int page = 1)
+        public IPagedList<ArticleDetailVm> GetArticlesByGroupId(int groupId, int page = 1)
         {
             if (page <= 0) page = 1;
             return _context.Articles
-                .Where(c => c.Id == articeId)   
+                .Where(c => c.GroupId == groupId)
                 .Select(c => c.ToDetailViewModel())
                 .ToPagedList(page, Values.PageSize);
         }
@@ -63,6 +63,7 @@ namespace VesalBahar.Core.Services
                 await _context.Articles.AddAsync(new Article
                 {
                     Id = vm.Id,
+                    GroupId = vm.GroupId,
                     Title = vm.Title,
                     HeadTitle = vm.HeadTitle,
                     Description = vm.Description,
@@ -93,8 +94,8 @@ namespace VesalBahar.Core.Services
                     article.ImageTitle = articleImageTitle;
                 }
 
-
                 article.Title = vm.Title;
+                article.GroupId = vm.GroupId;
                 article.Description = vm.Description;
                 article.ModifyDate = DateTime.Now;
                 _context.Articles.Update(article);
