@@ -1,0 +1,189 @@
+﻿@model Tuple<ArticleGroupCreateOrEditVm, X.PagedList.IPagedList<ArticleDetailVm>>
+@inject VesalBahar.Core.Interfaces.IArticleGroupService ArticleGrooupService;
+@{ ViewBag.Title = Model.Item1.Title;}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li> @Model.Item1.Title </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!--shop  area start-->
+<div class="shop_area shop_reverse mt-60 mb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <!--sidebar widget start-->
+                <aside class="sidebar_widget">
+                    <div class="widget_inner">
+                        <div class="widget_list widget_categories">
+                            <h2>دسته های محصولات</h2>
+                            <ul>
+                                @foreach (var item in await ArticleGrooupService.GetAllAsync())
+                                {
+                    <li>
+                        <a asp-controller="articleGroups" asp-action="Index"
+                           asp-route-id="@item.Id" asp-route-title="@item.Title.FixedUrl()"> @item.Title</a>
+                    </li>}
+
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_filter">
+                            <h2>فیلتر با قیمت</h2>
+                            <form action="">
+                                <div id="slider-range"></div>
+                                <input type="text" id="amount">
+                                <button type="submit">فیلتر</button>
+                                <input type="hidden" id="price-min" name="price_min">
+                                <input type="hidden" id="price-max" name="price_max">
+                            </form>
+                        </div>
+                    </div>
+                </aside>
+                <!--sidebar widget end-->
+            </div>
+            <div class="col-lg-9 col-md-12">
+                @if (Model.Item2.Count > 0)
+                {<!--shop wrapper start--> <!--shop toolbar start-->
+                                    <div class="shop_toolbar_wrapper">
+                                        <div class="shop_toolbar_btn">
+                                            <button data-role="grid_3" type="button" class="btn-grid-3" data-toggle="tooltip" title="3"></button>
+                                            <button data-role="grid_4" type="button" class="btn-grid-4" data-toggle="tooltip" title="4"></button>
+                                            <button data-role="grid_list" type="button" class="active btn-list" data-toggle="tooltip" title="لیست"></button>
+                                        </div>
+                                        <div class="niceselect_container">
+                                            <form action="#">
+                                                <label>ترتیب:</label>
+                                                <select class="select_option" name="orderby" id="short">
+                                                    <option selected value="1">امتیاز متوسط</option>
+                                                    <option value="2">محبوبیت</option>
+                                                    <option value="3">تعداد فروش</option>
+                                                    <option value="4">قیمت صعودی</option>
+                                                    <option value="5">قیمت نزولی</option>
+                                                    <option value="6">نام محصول</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                        <div class="page_amount">
+                                            <p>نمایش 1-12 از 24 محصول</p>
+                                        </div>
+                                    </div> <!--shop toolbar end-->
+
+                                                    <div class="row shop_wrapper grid_list">
+                                                        @foreach (var item in Model.Item2)
+                                                        {
+
+
+                                        <div class="col-12 ">
+                                            <article class="single_article">
+                                                <figure>
+                                                    <div class="article_thumb">
+                                                        <a class="primary_img" asp-controller="Article" asp-action="Index" asp-route-id="@item.Id"><img src="@item.ImageFullName" alt=""></a>
+                                                        <a class="secondary_img" asp-controller="Article" asp-action="Index" asp-route-id="@item.Id"><img src="@item.ImageFullName" alt=""></a>
+                                                        <div class="label_article">
+                                                            <span class="label_sale">فروش</span>
+                                                        </div>
+                                                        <div class="action_links">
+                                                            <ul>
+                                                                <li class="wishlist">
+                                                                    <a href="#" title="افزودن به علاقه‌مندی‌ها">
+                                                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="compare">
+                                                                    <a href="#" title="مقایسه">
+                                                                        <span class="ion-levels"></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="quick_button">
+                                                                    <a href="javascript:void(0)" onclick="LoadDetail('@(item.Id)')" title="مشاهده سریع">
+                                                                        <span class="ion-ios-search-strong"></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="add_to_cart">
+                                                            <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="article_content grid_content">
+
+                                                        <h3 class="article_name grid_name"><a asp-controller="Article" asp-action="Index" asp-route-id="@item.Id">@item.Title</a></h3>
+                                                    </div>
+                                                    <div class="article_content list_content">
+                                                        <div class="left_caption">
+                                                            <h3 class="article_name"><a asp-controller="Article" asp-action="Index" asp-route-id="@item.Id">@item.Title</a></h3>
+
+                                                            <div class="article_desc">
+                                                                <p>@item.Description</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="right_caption">
+                                                            <div class="add_to_cart">
+                                                                <a href="javascript:void(0)" onclick="AddToCart('@(item.Id)')" title="افزودن به سبد">افزودن به سبد</a>
+                                                            </div>
+                                                            <div class="action_links">
+                                                                <ul>
+                                                                    <li class="wishlist"><a href="#" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i>  افزودن به علاقه‌مندی‌ها</a></li>
+                                                                    <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span> مقایسه</a></li>
+                                                                    <li class="quick_button">
+                                                                        <a href="javascript:void(0)" onclick="LoadDetail('@(item.Id)')" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span> نمایش سریع</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </figure>
+                                            </article>
+                                        </div>}
+
+                                                    </div>
+
+                                                                    <div class="shop_toolbar t_bottom">
+                                                                        <div class="pagination">
+                                                                            <ul>
+
+                                                                                @if (Model.Item2.HasPreviousPage)
+                                                                                {
+                                                                <li class="prev">
+                                                                    <a href="?page=@(Model.Item2.PageNumber - 1)">قبل</a>
+                                                                </li>}
+                                                                                @for (int i = 1; i <= Model.Item2.PageCount; i++)
+                                                                                {
+                                                                                    var isCurrent = Model.Item2.PageNumber == i;
+                                                                <li class="@(isCurrent?"current":"")">
+                                                                    @if (isCurrent)
+                                                                    {
+                                                <span>@i</span> }
+                                            else
+                                            {
+                        <a href="?page=@(i)">@i</a>}
+                                                                </li>
+}
+                                                                                @if (Model.Item2.HasNextPage)
+                                                                                {
+                                                                <li class="next"><a href="?page=@(Model.Item2.PageNumber + 1)">بعدی</a></li>
+}
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div> <!--shop toolbar end--> <!--shop wrapper end--> }
+                                                                else
+                                                                {
+                                                    <p class="alert alert-info">محصولی یافت نشد !!!</p>}
+            </div>
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+@section Scripts{
+    <script src="~/js/app/article-group.js" asp-append-version="true"></script>
+}

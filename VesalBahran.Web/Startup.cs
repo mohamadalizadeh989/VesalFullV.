@@ -26,9 +26,6 @@ namespace VesalBahran.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddServiceToIoC(_configuration);
-
             #region Authentication
             services.AddAuthentication(op =>
             {
@@ -44,6 +41,14 @@ namespace VesalBahran.Web
             });
             #endregion
 
+            services.AddHttpContextAccessor();
+            services.AddServiceToIoC(_configuration);
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+            });
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +57,12 @@ namespace VesalBahran.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-6.0
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
             }
 
             app.UseStaticFiles();
